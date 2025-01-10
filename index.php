@@ -34,7 +34,12 @@
             <div class="card card-body">
                 <form action="tasks.php" method="POST">
                     <div class="form-group">
-                        <input class="form-control" type="stext" name="title" placeholder="Title" required autofocus value="<?php if(isset($title)) echo $title; ?>">
+            <?php if(isset($_SESSION['message'])) { 
+                <div class="alert alert-<?php echo $_SESSION['message_type'];?>" role="alert">
+                    <?php echo $_SESSION['message']; ?>
+                </div>
+                <?php session_unset();} ?>
+
                         <?php if(isset($title)){
                             ?><input type="hidden" name="edid" value="<?php echo $_GET['edid']?>"><?php } ?>
 
